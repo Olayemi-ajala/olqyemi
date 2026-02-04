@@ -1,0 +1,487 @@
+/*
+ * Microsoft Fluent Design System Inspired Stylesheet
+ * Author: Olayemi Ajala
+ * Description: Clean, modern Microsoft-style personal profile page
+ */
+
+/* ============================================
+   CSS Custom Properties (Design Tokens)
+   Microsoft Fluent Design color palette
+   ============================================ */
+:root {
+    /* Primary Colors - Microsoft Blue */
+    --ms-blue: #0078D4;
+    --ms-blue-hover: #106EBE;
+    --ms-blue-active: #005A9E;
+    --ms-blue-light: #DEECF9;
+
+    /* Neutral Colors */
+    --neutral-white: #FFFFFF;
+    --neutral-gray-10: #FAF9F8;
+    --neutral-gray-20: #F3F2F1;
+    --neutral-gray-30: #EDEBE9;
+    --neutral-gray-60: #8A8886;
+    --neutral-gray-90: #605E5C;
+    --neutral-gray-130: #323130;
+    --neutral-gray-160: #201F1E;
+
+    /* Shadows - Fluent Design depth levels */
+    --shadow-4: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132),
+                0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+    --shadow-8: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132),
+                0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+    --shadow-16: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132),
+                 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+    --shadow-64: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22),
+                 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+
+    /* Typography */
+    --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont,
+                   'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+                   'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                   sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+
+    /* Border Radius - Fluent Design rounded corners */
+    --radius-small: 4px;
+    --radius-medium: 8px;
+    --radius-large: 12px;
+    --radius-xlarge: 16px;
+    --radius-circle: 50%;
+
+    /* Transitions */
+    --transition-fast: 0.1s ease-in-out;
+    --transition-normal: 0.2s ease-in-out;
+    --transition-slow: 0.3s ease-in-out;
+}
+
+/* ============================================
+   Base Reset and Typography
+   ============================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--neutral-gray-160);
+    background: linear-gradient(135deg, var(--neutral-gray-10) 0%, var(--neutral-white) 50%, var(--ms-blue-light) 100%);
+    min-height: 100vh;
+}
+
+/* ============================================
+   Main Container Layout
+   ============================================ */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-m);
+}
+
+/* ============================================
+   Profile Card Component
+   Microsoft Fluent Design card styling
+   ============================================ */
+.profile-card {
+    background-color: var(--neutral-white);
+    border-radius: var(--radius-xlarge);
+    box-shadow: var(--shadow-16);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    transition: box-shadow var(--transition-normal),
+                transform var(--transition-normal);
+}
+
+/* Subtle hover effect for the card */
+.profile-card:hover {
+    box-shadow: var(--shadow-64);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Avatar Section
+   ============================================ */
+.avatar-section {
+    margin-bottom: var(--spacing-l);
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-circle);
+    background: linear-gradient(135deg, var(--ms-blue) 0%, var(--ms-blue-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: var(--shadow-8);
+}
+
+.avatar-initials {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--neutral-white);
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   Profile Header
+   ============================================ */
+.profile-header {
+    margin-bottom: var(--spacing-l);
+}
+
+.profile-name {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--neutral-gray-160);
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: -0.5px;
+}
+
+.profile-tagline {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--neutral-gray-90);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* ============================================
+   Divider
+   ============================================ */
+.divider {
+    border: none;
+    height: 1px;
+    background-color: var(--neutral-gray-30);
+    margin: var(--spacing-l) 0;
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    margin-bottom: var(--spacing-l);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-m);
+    padding: var(--spacing-s) var(--spacing-m);
+    border-radius: var(--radius-medium);
+    transition: background-color var(--transition-fast);
+}
+
+/* Hover state for contact items */
+.contact-item:hover {
+    background-color: var(--neutral-gray-20);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-medium);
+    background-color: var(--ms-blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--ms-blue);
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--neutral-gray-90);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-value {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--neutral-gray-130);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* Link hover state */
+a.contact-value:hover {
+    color: var(--ms-blue);
+}
+
+/* ============================================
+   Action Button
+   Microsoft Fluent Design primary button
+   ============================================ */
+.action-section {
+    margin-top: var(--spacing-l);
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-s) var(--spacing-xl);
+    background-color: var(--ms-blue);
+    color: var(--neutral-white);
+    font-family: var(--font-family);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                box-shadow var(--transition-fast),
+                transform var(--transition-fast);
+    min-width: 160px;
+    height: 40px;
+}
+
+.btn-primary:hover {
+    background-color: var(--ms-blue-hover);
+    box-shadow: var(--shadow-4);
+}
+
+.btn-primary:active {
+    background-color: var(--ms-blue-active);
+    transform: scale(0.98);
+}
+
+/* Focus state for accessibility */
+.btn-primary:focus {
+    outline: 2px solid var(--ms-blue);
+    outline-offset: 2px;
+}
+
+.btn-primary:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.btn-primary:focus-visible {
+    outline: 2px solid var(--ms-blue);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.8125rem;
+    color: var(--neutral-gray-90);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Tablet and smaller desktops */
+@media (max-width: 768px) {
+    .profile-card {
+        padding: var(--spacing-xl) var(--spacing-l);
+        max-width: 380px;
+    }
+
+    .profile-name {
+        font-size: 1.5rem;
+    }
+
+    .avatar {
+        width: 88px;
+        height: 88px;
+    }
+
+    .avatar-initials {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: var(--spacing-s);
+    }
+
+    .profile-card {
+        padding: var(--spacing-l) var(--spacing-m);
+        border-radius: var(--radius-large);
+    }
+
+    .profile-name {
+        font-size: 1.375rem;
+    }
+
+    .profile-tagline {
+        font-size: 0.75rem;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .avatar-initials {
+        font-size: 1.75rem;
+    }
+
+    .contact-item {
+        padding: var(--spacing-xs) var(--spacing-s);
+        gap: var(--spacing-s);
+    }
+
+    .contact-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .contact-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .contact-value {
+        font-size: 0.875rem;
+        /* Handle long email addresses */
+        word-break: break-all;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: var(--spacing-s) var(--spacing-m);
+    }
+
+    .footer p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 320px) {
+    .profile-card {
+        padding: var(--spacing-m) var(--spacing-s);
+    }
+
+    .profile-name {
+        font-size: 1.25rem;
+    }
+
+    .contact-details {
+        min-width: 0;
+    }
+}
+
+/* ============================================
+   Accessibility - Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .profile-card:hover {
+        transform: none;
+    }
+
+    .btn-primary:active {
+        transform: none;
+    }
+}
+
+/* ============================================
+   Dark Mode Support (Optional Enhancement)
+   Respects system preferences
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --neutral-white: #1F1F1F;
+        --neutral-gray-10: #2D2D2D;
+        --neutral-gray-20: #333333;
+        --neutral-gray-30: #3D3D3D;
+        --neutral-gray-90: #A19F9D;
+        --neutral-gray-130: #D2D0CE;
+        --neutral-gray-160: #F3F2F1;
+        --ms-blue-light: #004578;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a3a5c 100%);
+    }
+
+    .avatar {
+        box-shadow: var(--shadow-16);
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    body {
+        background: white;
+    }
+
+    .profile-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .btn-primary {
+        display: none;
+    }
+
+    a.contact-value::after {
+        content: " (" attr(href) ")";
+        font-size: 0.75rem;
+        color: #666;
+    }
+}
